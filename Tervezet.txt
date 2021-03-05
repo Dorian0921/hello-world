@@ -1,0 +1,70 @@
+02.26 10-óra klnzult vázlat
+
+User/password login tábla
+Username
+password
+
+
+Dolgozói adatok tábla
+Username
+neve
+szuletes
+fizetes
+foglalkozas
+
+
+Utas adatok
+Username 
+neve
+Szuletes
+e-mail
+Diak
+Nyugdijas
+
+
+Városok tábla
+neve
+id
+
+Vonatok tábla
+szerelvenyszam
+elsoosztaly kocsik szama
+masodosztaly kocsik szama
+bicikli
+neve
+
+
+Jegyár tábla
+id
+neve
+ár/km
+
+Rendezvények
+neve
+idopont
+helyszin
+
+Beosztások tábla
+username
+mettol
+meddig
+
+Menetrend
+szerelvenyszam
+kiindulovaros
+erkezovaros
+induloidopont
+érkezoidopont
+mozdonyvezeto
+km
+
+
+Eladott jegyek
+username
+jegykategoria
+megvetelido
+honnan 
+hova
+ara
+
+
