@@ -1,5 +1,12 @@
 helloo world
 ide is
 valtoztatas
-ezt én írtam Józsi
+<<<<<<< HEAD
+ezt én írtam
 randnom stuff
+=======
+randnom stuff
+5
+6
+7
+>>>>>>> 23a2a193c219d4b4c31049afd5d0e6bf96b56a30
