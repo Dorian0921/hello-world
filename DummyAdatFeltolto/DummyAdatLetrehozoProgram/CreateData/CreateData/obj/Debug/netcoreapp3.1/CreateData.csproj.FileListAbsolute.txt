@@ -11,3 +11,16 @@ C:\Users\jzsef\source\repos\CreateData\CreateData\obj\Debug\netcoreapp3.1\Create
 C:\Users\jzsef\source\repos\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.dll
 C:\Users\jzsef\source\repos\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.pdb
 C:\Users\jzsef\source\repos\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.genruntimeconfig.cache
+D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.exe
+D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.deps.json
+D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.runtimeconfig.json
+D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.runtimeconfig.dev.json
+D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.dll
+D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.pdb
+D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.csprojAssemblyReference.cache
+D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.AssemblyInfoInputs.cache
+D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.AssemblyInfo.cs
+D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.csproj.CoreCompileInputs.cache
+D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.dll
+D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.pdb
+D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.genruntimeconfig.cache

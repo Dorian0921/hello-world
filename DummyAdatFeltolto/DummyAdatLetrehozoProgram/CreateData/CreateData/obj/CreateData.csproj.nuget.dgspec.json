@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jzsef\\source\\repos\\CreateData\\CreateData\\CreateData.csproj": {}
+    "D:\\AdatbázisokKötprog\\hello-world\\DummyAdatFeltolto\\DummyAdatLetrehozoProgram\\CreateData\\CreateData\\CreateData.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jzsef\\source\\repos\\CreateData\\CreateData\\CreateData.csproj": {
+    "D:\\AdatbázisokKötprog\\hello-world\\DummyAdatFeltolto\\DummyAdatLetrehozoProgram\\CreateData\\CreateData\\CreateData.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jzsef\\source\\repos\\CreateData\\CreateData\\CreateData.csproj",
+        "projectUniqueName": "D:\\AdatbázisokKötprog\\hello-world\\DummyAdatFeltolto\\DummyAdatLetrehozoProgram\\CreateData\\CreateData\\CreateData.csproj",
         "projectName": "CreateData",
-        "projectPath": "C:\\Users\\jzsef\\source\\repos\\CreateData\\CreateData\\CreateData.csproj",
+        "projectPath": "D:\\AdatbázisokKötprog\\hello-world\\DummyAdatFeltolto\\DummyAdatLetrehozoProgram\\CreateData\\CreateData\\CreateData.csproj",
         "packagesPath": "C:\\Users\\jzsef\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jzsef\\source\\repos\\CreateData\\CreateData\\obj\\",
+        "outputPath": "D:\\AdatbázisokKötprog\\hello-world\\DummyAdatFeltolto\\DummyAdatLetrehozoProgram\\CreateData\\CreateData\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jzsef\\AppData\\Roaming\\NuGet\\NuGet.Config",
