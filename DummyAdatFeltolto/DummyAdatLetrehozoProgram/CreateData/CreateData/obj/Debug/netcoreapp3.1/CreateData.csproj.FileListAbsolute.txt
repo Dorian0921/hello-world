@@ -1,0 +1,13 @@
+C:\Users\jzsef\source\repos\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.exe
+C:\Users\jzsef\source\repos\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.deps.json
+C:\Users\jzsef\source\repos\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.runtimeconfig.json
+C:\Users\jzsef\source\repos\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.runtimeconfig.dev.json
+C:\Users\jzsef\source\repos\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.dll
+C:\Users\jzsef\source\repos\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.pdb
+C:\Users\jzsef\source\repos\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.csprojAssemblyReference.cache
+C:\Users\jzsef\source\repos\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.AssemblyInfoInputs.cache
+C:\Users\jzsef\source\repos\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.AssemblyInfo.cs
+C:\Users\jzsef\source\repos\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.csproj.CoreCompileInputs.cache
+C:\Users\jzsef\source\repos\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.dll
+C:\Users\jzsef\source\repos\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.pdb
+C:\Users\jzsef\source\repos\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.genruntimeconfig.cache
