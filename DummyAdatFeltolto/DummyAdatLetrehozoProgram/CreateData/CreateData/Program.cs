@@ -128,7 +128,7 @@ namespace CreateData
                             dolgozok_szama[j]++;
                         }
                     }
-                    dolgozo.WriteLine("INSERT INTO DOLGOZOK(USERNAME,NEV,SZULDATUM,BER,FOGLALKOZAS,VAROS)VALUES('{0}','{1}','{2}','{3}','{4}','{5}');",username,nev,szuldatum,ber,foglalkozas,varos); //dolgozo.sql parancsai
+                    dolgozo.WriteLine("INSERT INTO DOLGOZOK(USERNAME,NEV,SZULDATUM,BER,FOGLALKOZAS,VAROS)VALUES('{0}','{1}',TO_DATE('{2}', 'yyyy/mm/dd'),'{3}','{4}','{5}');", username,nev,szuldatum,ber,foglalkozas,varos); //dolgozo.sql parancsai
 
                     //BEOSZTÁS
                     string mettol = "";
@@ -166,7 +166,7 @@ namespace CreateData
                             break;
                     }
 
-                    beosztas.WriteLine("INSERT INTO BEOSZTAS(ID,USERNAME,METTOL,MEDDIG)VALUES('{0}','{1}','{2}','{3}');",beosztasid,username,mettol,meddig);//beosztas.sql parancsai
+                    beosztas.WriteLine("INSERT INTO BEOSZTAS(ID,USERNAME,METTOL,MEDDIG)VALUES('{0}','{1}',timestamp '{2}',timestamp '{3}');", beosztasid,username,mettol,meddig);//beosztas.sql parancsai
                     beosztasid++;
                 }
                 else//UTAS
@@ -208,7 +208,7 @@ namespace CreateData
                     {
                         nyugdijas = "1";
                     }
-                    utas.WriteLine("INSERT INTO UTAS(USERNAME, NEV, SZULDATUM, EMAIL, DIAK, NYUGDIJAS)VALUES('{0}','{1}','{2}','{3}','{4}','{5}');",username,nev,szuldatum,email,diak,nyugdijas);//utas.sql parancsai
+                    utas.WriteLine("INSERT INTO UTAS(USERNAME, NEV, SZULDATUM, EMAIL, DIAK, NYUGDIJAS)VALUES('{0}','{1}',TO_DATE('{2}', 'yyyy/mm/dd'),'{3}','{4}','{5}');", username,nev,szuldatum,email,diak,nyugdijas);//utas.sql parancsai
 
                     //ELADOTTJEGYEK
 
@@ -225,7 +225,7 @@ namespace CreateData
                         int km = r.Next(2,17);//ideiglenes km vagy súlyérték a városok között ameddig ki nem találjuk hogy az mi lesz
                         string ar = Convert.ToString(Convert.ToInt32(jegyar[kat])*km);
 
-                        eladottjegyek.WriteLine("INSERT INTO ELADOTTJEGYEK(ID,USERNAME,JEGYKATEGORIA,IDOPONT,HONNAN,HOVA,AR)VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}');", eladottjegyid,username,jegykategoriak[kat],vasarlasidopont,honnan,hova,ar);//eladottjegyek.sql parancsai
+                        eladottjegyek.WriteLine("INSERT INTO ELADOTTJEGYEK(ID,USERNAME,JEGYKATEGORIA,IDOPONT,HONNAN,HOVA,AR)VALUES('{0}','{1}','{2}',TO_DATE('{3}', 'yyyy/mm/dd'),'{4}','{5}','{6}');", eladottjegyid,username,jegykategoriak[kat],vasarlasidopont,honnan,hova,ar);//eladottjegyek.sql parancsai
                         eladottjegyid++;
                     }
                     
