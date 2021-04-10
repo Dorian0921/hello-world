@@ -1,3 +1,5 @@
 takarító
 mozdonyvezető
 kalauz
+pénztáros
+szervizes

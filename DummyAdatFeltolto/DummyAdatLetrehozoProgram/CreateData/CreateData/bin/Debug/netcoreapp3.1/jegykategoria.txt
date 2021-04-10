@@ -1,3 +1,5 @@
-kat1
-kat2
-kat3
+menetjegy
+gyorsvonat
+sebesvonat
+elsőosztályú
+másodosztályú

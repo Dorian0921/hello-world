@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+
 using System.Text;
 namespace CreateData
 {
@@ -48,6 +49,7 @@ namespace CreateData
             StreamWriter jegyiro = new StreamWriter(@"sqlfiles\jegy.sql", append: false);
             StreamWriter beosztas = new StreamWriter(@"sqlfiles\beosztas.sql", append: false);
             StreamWriter eladottjegyek = new StreamWriter(@"sqlfiles\eladottjegyek.sql", append: false);
+            StreamWriter mozdonyvezeto = new StreamWriter(@"sqlfiles\mozdonyvezeto.xml",false,Encoding.UTF8);
 
 
             Random r = new Random();
@@ -129,7 +131,8 @@ namespace CreateData
                         }
                     }
                     dolgozo.WriteLine("INSERT INTO DOLGOZOK(USERNAME,NEV,SZULDATUM,BER,FOGLALKOZAS,VAROS)VALUES('{0}','{1}',TO_DATE('{2}', 'yyyy/mm/dd'),'{3}','{4}','{5}');", username, nev, szuldatum, ber, foglalkozas, varos); //dolgozo.sql parancsai
-
+                    
+                    
                     //BEOSZTÁS
                     string mettol = "";
                     string meddig = "";
@@ -167,6 +170,10 @@ namespace CreateData
                     }
 
                     beosztas.WriteLine("INSERT INTO BEOSZTAS(ID,USERNAME,METTOL,MEDDIG)VALUES('{0}','{1}',timestamp '{2}',timestamp '{3}');", beosztasid, username, mettol, meddig);//beosztas.sql parancsai
+                    if (foglalkozas == "mozdonyvezető")
+                    {
+                        mozdonyvezeto.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", username, nev, foglalkozas, varos, mettol, meddig);
+                    }
                     beosztasid++;
                 }
                 else//UTAS
@@ -283,6 +290,7 @@ namespace CreateData
             másképp vagy ír bele valamit vagy egyáltalán semmit
             de az boztos hogy nem lesz benne minden amit bele akartál rakni
             szóval mindig zárd le!!!*/
+            mozdonyvezeto.Close();
             varosiro.Close();
             dolgozo.Close();
             utas.Close();
