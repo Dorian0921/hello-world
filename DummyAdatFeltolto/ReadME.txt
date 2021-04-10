@@ -17,8 +17,6 @@ Hol van maga a program??
 	 van egy olyan név hogy Program.cs arra katt
 
 
-Ha futtatjátok a programot akkor előtte töröljétek ki az sql fájlokat vagy az egész sqlfiles mappát 
-mert másképp csak hozzáír a létező fájlhoz az meg nem jó mert akkor lehetnek ismétlődő adatok
 
 
 A kód nagyon ronda de csak egyszer használatos amúgy is szóval arra jó lesz.
