@@ -161,7 +161,7 @@ namespace CreateData
                             break;
                         case 5:
                             mettol = "1970-01-05 16:00:00";
-                            meddig = "1970-01-04 23:59:59";
+                            meddig = "1970-01-07 23:59:59";
                             break;
                         default:
                             mettol = "1970-01-01 00:00:00";
