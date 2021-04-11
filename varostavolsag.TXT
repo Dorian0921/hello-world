@@ -16,4 +16,3 @@ Szekszárd;Pécs;48
 Veszprém;Zalaegerszeg;86
 Veszprém;Szombathely;97
 Veszprém;Győr;64
-
