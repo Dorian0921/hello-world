@@ -22,6 +22,8 @@ namespace CreateData
             string[] foglalkozasok = File.ReadAllLines("foglalkozasok.txt");
             string[] jegykategoriak = File.ReadAllLines("jegykategoria.txt");
             string[] jegyar = File.ReadAllLines("jegyar.txt");
+            string[] menetrendRaw = File.ReadAllLines("Menetrend.txt");
+            string[] varostav = File.ReadAllLines("varostavolsag.txt");
             int[] dolgozok_szama = new int[varosok.Length];
 
             //id-k amik később kellenek majd
@@ -50,6 +52,7 @@ namespace CreateData
             StreamWriter beosztas = new StreamWriter(@"sqlfiles\beosztas.sql", append: false);
             StreamWriter eladottjegyek = new StreamWriter(@"sqlfiles\eladottjegyek.sql", append: false);
             StreamWriter mozdonyvezeto = new StreamWriter(@"sqlfiles\mozdonyvezeto.xml",false,Encoding.UTF8);
+            StreamWriter menetrendek = new StreamWriter(@"sqlfiles\menetrendek.sql",false);
 
 
             Random r = new Random();
@@ -66,10 +69,11 @@ namespace CreateData
             }
 
             //Userek létrehozása
+            int dolgozoid = 1;
             for (int i = 0; i < darab; i++)
             {
                 string username = melleknevek[r.Next(0, melleknevek.Length)] + "_" + allatok[r.Next(0, allatok.Length)];
-
+                
                 username = username.Replace('á', 'a');//lecserélem az ékezetes betűket mert ez ugye egy username
                 username = username.Replace('é', 'e');
                 username = username.Replace('í', 'i');
@@ -105,6 +109,8 @@ namespace CreateData
                 usernames[i] = username;
 
                 string nev;
+                string foglalkozas = "";
+                string role = "";
 
                 if (r.Next(0, 10) % 2 == 0)//Nő
                 {
@@ -119,9 +125,10 @@ namespace CreateData
 
                 if (r.Next(0, 5) == 2)//20% esély hogy dolgozó lesz az adoot létrehozott felhasználó
                 {
+                    role = "dolgozo";
                     szuldatum = Convert.ToString(r.Next(1970, 2000)) + "-" + Convert.ToString(r.Next(1, 12)) + "-" + Convert.ToString(r.Next(1, 28));
                     string ber = Convert.ToString(r.Next(1450, 2350));
-                    string foglalkozas = foglalkozasok[r.Next(0, foglalkozasok.Length)];
+                    foglalkozas = foglalkozasok[r.Next(0, foglalkozasok.Length)];
                     string varos = varosok[r.Next(0, varosok.Length)];
                     for (int j = 0; j < varosok.Length; j++)
                     {
@@ -130,8 +137,8 @@ namespace CreateData
                             dolgozok_szama[j]++;
                         }
                     }
-                    dolgozo.WriteLine("INSERT INTO DOLGOZOK(USERNAME,NEV,SZULDATUM,BER,FOGLALKOZAS,VAROS)VALUES('{0}','{1}',TO_DATE('{2}', 'yyyy/mm/dd'),'{3}','{4}','{5}');", username, nev, szuldatum, ber, foglalkozas, varos); //dolgozo.sql parancsai
-                    
+                    dolgozo.WriteLine("INSERT INTO DOLGOZOK(DOLGOZO_AZONOSITO,USERNAME,NEV,SZULDATUM,BER,FOGLALKOZAS,VAROS)VALUES('{0}','{1}','{2}', TO_DATE('{3}', 'yyyy/mm/dd'),'{4}','{5}','{6}');", dolgozoid, username, nev, szuldatum, ber, foglalkozas, varos); //dolgozo.sql parancsai
+                    dolgozoid++;
                     
                     //BEOSZTÁS
                     string mettol = "";
@@ -176,10 +183,12 @@ namespace CreateData
                     }
                     beosztasid++;
                 }
+
+                
                 else//UTAS
                 {
                     string email = username;
-
+                    role = "utas";
                     switch (r.Next(0, 5))// különböző e-mail szolgáltatókat rendelek hozzá hogy életűbb legyen vagy mi idk.
                     {
                         case 0:
@@ -219,9 +228,9 @@ namespace CreateData
 
                     //ELADOTTJEGYEK
 
-                    for (int j = 0; j < r.Next(2, 8); j++)//<---Vásárolt jegyek száma
+                    for (int j = 0; j < r.Next(1, 4); j++)//<---Vásárolt jegyek száma
                     {
-                        int kat = r.Next(0, jegykategoriak.Length);
+                        int kat = r.Next(1, jegykategoriak.Length);
                         string vasarlasidopont = Convert.ToString(r.Next(2017, 2021)) + "-" + Convert.ToString(r.Next(1, 12)) + "-" + Convert.ToString(r.Next(1, 28));
                         string honnan = varosok[r.Next(0, varosok.Length)];
                         string hova = varosok[r.Next(0, varosok.Length)];
@@ -229,10 +238,10 @@ namespace CreateData
                         {
                             hova = varosok[r.Next(0, varosok.Length)];
                         }
-                        int km = r.Next(2, 17);//ideiglenes km vagy súlyérték a városok között ameddig ki nem találjuk hogy az mi lesz
+                        int km = r.Next(40, 350);//ideiglenes km vagy súlyérték a városok között ameddig ki nem találjuk hogy az mi lesz
                         string ar = Convert.ToString(Convert.ToInt32(jegyar[kat]) * km);
 
-                        eladottjegyek.WriteLine("INSERT INTO ELADOTTJEGYEK(ID,USERNAME,JEGYKATEGORIA,IDOPONT,HONNAN,HOVA,AR)VALUES('{0}','{1}','{2}',TO_DATE('{3}', 'yyyy/mm/dd'),'{4}','{5}','{6}');", eladottjegyid, username, jegykategoriak[kat], vasarlasidopont, honnan, hova, ar);//eladottjegyek.sql parancsai
+                        eladottjegyek.WriteLine("INSERT INTO ELADOTTJEGYEK(ELADOTTJEGYID,USERNAME,JEGYKATEGORIA,IDOPONT,HONNAN,HOVA,AR)VALUES('{0}','{1}','{2}',TO_DATE('{3}', 'yyyy/mm/dd'),'{4}','{5}','{6}');", eladottjegyid, username, kat, vasarlasidopont, honnan, hova, ar);//eladottjegyek.sql parancsai
                         eladottjegyid++;
                     }
 
@@ -242,7 +251,7 @@ namespace CreateData
 
 
 
-                login.WriteLine("INSERT INTO LOGIN(USERNAME, PASSWORD)VALUES('{0}', '{1}');", username, password);// login.sql (az összes username és password) parancsai
+                login.WriteLine("INSERT INTO LOGIN(USERNAME, PASSWORD, ROLE)VALUES('{0}', '{1}', '{2}');", username, password,role);// login.sql (az összes username és password) parancsai
             }
 
             for (int i = 0; i < varosok.Length; i++)//VAROSOK
@@ -272,10 +281,10 @@ namespace CreateData
             for (int i = 0; i < 30; i++)//Szuper király rendezvények
             {
                 string rendezvenynev = "Éves " + allatok[r.Next(0, allatok.Length)] + " ünnepély";
-                string idopont = "2021-" + Convert.ToString(r.Next(0, 12)) + "-" + Convert.ToString(r.Next(0, 28));
+                string idopont = "2021-" + Convert.ToString(r.Next(1, 12)) + "-" + Convert.ToString(r.Next(1, 28));
                 string helyszin = varosok[r.Next(0, varosok.Length)];
 
-                rendezveny.WriteLine("INSERT INTO RENDEZVENY(RENDEZVENYNEV,IDOPONT,HELYSZIN)VALUE('{0}','{1}','{2}');", rendezvenynev, idopont, helyszin);//rendezvenyek.sql parancsai
+                rendezveny.WriteLine("INSERT INTO RENDEZVENY(ID,RENDEZVENYNEV,IDOPONT,HELYSZIN)VALUES('{0}','{1}',TO_DATE('{2}', 'yyyy/mm/dd'),'{3}');", i+1, rendezvenynev, idopont, helyszin);//rendezvenyek.sql parancsai
             }
 
 
@@ -285,6 +294,223 @@ namespace CreateData
                 jegyiro.WriteLine("INSERT INTO JEGY_AR(ID, KATEGORIA, AR_KM)VALUES('{0}','{1}','{2}');", i + 1, jegykategoriak[i], jegyar[i]);//jegy.sql parancsai
             }
 
+
+            string[] startvaros = new string[18];
+            string[] destiny = new string[18];
+            int[] tav = new int[18];
+            string[] start = new string[24];
+            string[] stop= new string[24];
+
+
+            for (int i = 0; i < menetrendRaw.Length; i++)
+            {
+                string[] tmp=menetrendRaw[i].Split(";");
+                
+                
+
+                start[i] = tmp[4];
+                stop[i] = tmp[5];
+
+            }
+            int id=1;
+            int train = r.Next(1, 50);
+            int[] usedtrains = new int[50];
+            for (int i = 0; i < usedtrains.Length; i++)
+            {
+                usedtrains[i] = 0;
+            }
+            for (int i = 0; i < 18; i++)
+            {
+                string[] tmp = varostav[i].Split(";");
+                startvaros[i] = tmp[0];
+                destiny[i] = tmp[1];
+                tav[i] = Convert.ToInt32(tmp[2]);
+                for (int j = 0; j < usedtrains.Length; j++)
+                {
+                    if (usedtrains[j]==train)
+                    {
+                        train = r.Next(1, 50);
+                        j = 0;
+                    }
+                    
+                }
+                
+                usedtrains[i] = train;
+                for (int j = 0; j < 24; j++)
+                {
+                    if (tav[i] >= 40 && tav[i] < 50)
+                    {
+                        string ido = stop[j];
+                        char[] asd = new char[ido.Length];
+                        for (int k = 0; k < ido.Length; k++)
+                        {
+
+                            asd[k] = ido[k];
+                        }
+                        
+                        asd[14] = '2';
+                        asd[15] = '0';
+                        ido = "";
+                        for (int k  = 0; k < asd.Length; k++)
+                        {
+                            ido += asd[k];
+                        }
+                        stop[j] = ido;
+                    }
+                    else if (tav[i] >= 50 && tav[i] < 60)
+                    {
+                        string ido = stop[j];
+                        char[] asd = new char[ido.Length];
+                        for (int k = 0; k < ido.Length; k++)
+                        {
+
+                            asd[k] = ido[k];
+                        }
+
+                        asd[14] = '2';
+                        asd[15] = '4';
+                        ido = "";
+                        for (int k = 0; k < asd.Length; k++)
+                        {
+                            ido += asd[k];
+                        }
+                        stop[j] = ido;
+                    }
+                    else if (tav[i] >= 60 && tav[i] < 70)
+                    {
+                        string ido = stop[j];
+                        char[] asd = new char[ido.Length];
+                        for (int k = 0; k < ido.Length; k++)
+                        {
+
+                            asd[k] = ido[k];
+                        }
+
+                        asd[14] = '3';
+                        asd[15] = '2';
+                        ido = "";
+                        for (int k = 0; k < asd.Length; k++)
+                        {
+                            ido += asd[k];
+                        }
+                        stop[j] = ido;
+                    }
+                    else if (tav[i] >= 70 && tav[i] < 80)
+                    {
+                        string ido = stop[j];
+                        char[] asd = new char[ido.Length];
+                        for (int k = 0; k < ido.Length; k++)
+                        {
+
+                            asd[k] = ido[k];
+                        }
+
+                        asd[14] = '3';
+                        asd[15] = '8';
+                        ido = "";
+                        for (int k = 0; k < asd.Length; k++)
+                        {
+                            ido += asd[k];
+                        }
+                        stop[j] = ido;
+                    }
+                    else if (tav[i] >= 80 && tav[i] < 90)
+                    {
+                        string ido = stop[j];
+                        char[] asd = new char[ido.Length];
+                        for (int k = 0; k < ido.Length; k++)
+                        {
+
+                            asd[k] = ido[k];
+                        }
+
+                        asd[14] = '4';
+                        asd[15] = '2';
+                        ido = "";
+                        for (int k = 0; k < asd.Length; k++)
+                        {
+                            ido += asd[k];
+                        }
+                        stop[j] = ido;
+                    }
+                    else if (tav[i] >= 90 && tav[i] < 100)
+                    {
+                        string ido = stop[j];
+                        char[] asd = new char[ido.Length];
+                        for (int k = 0; k < ido.Length; k++)
+                        {
+
+                            asd[k] = ido[k];
+                        }
+
+                        asd[14] = '4';
+                        asd[15] = '7';
+                        ido = "";
+                        for (int k = 0; k < asd.Length; k++)
+                        {
+                            ido += asd[k];
+                        }
+                        stop[j] = ido;
+                    }
+                    else if (tav[i] >= 100 && tav[i] < 110)
+                    {
+                        string ido = stop[j];
+                        char[] asd = new char[ido.Length];
+                        for (int k = 0; k < ido.Length; k++)
+                        {
+
+                            asd[k] = ido[k];
+                        }
+
+                        asd[14] = '5';
+                        asd[15] = '3';
+                        ido = "";
+                        for (int k = 0; k < asd.Length; k++)
+                        {
+                            ido += asd[k];
+                        }
+                        stop[j] = ido;
+                    }
+                    else
+                    {
+                        string ido = stop[j];
+                        char[] asd = new char[ido.Length];
+                        for (int k = 0; k < ido.Length; k++)
+                        {
+
+                            asd[k] = ido[k];
+                        }
+
+                        asd[14] = '5';
+                        asd[15] = '5';
+                        ido = "";
+                        for (int k = 0; k < asd.Length; k++)
+                        {
+                            ido += asd[k];
+                        }
+                        stop[j] = ido;
+                    }
+
+                    
+                }
+                for (int j = 0; j < 24; j++)
+                {
+                    if (j%2==0)
+                    {
+                        menetrendek.WriteLine("INSERT INTO MENETRENDEK(ID,SZERELVENY_SZAM,INDULO_VAROS,ERKEZO_VAROS,INDULOIDOPONT,ERKEZOIDOPONT,KM)VALUES('{0}','{1}','{2}','{3}',timestamp '{4}',timestamp '{5}',{6} );", id, train, startvaros[i], destiny[i], start[j], stop[j], tav[i]);
+                    }
+                    else
+                    {
+                        menetrendek.WriteLine("INSERT INTO MENETRENDEK(ID,SZERELVENY_SZAM,INDULO_VAROS,ERKEZO_VAROS,INDULOIDOPONT,ERKEZOIDOPONT,KM)VALUES('{0}','{1}','{2}','{3}',timestamp '{4}',timestamp '{5}',{6} );", id, train,destiny[i], startvaros[i], start[j], stop[j], tav[i]);
+                    }
+                    
+                    
+                    id++;
+                }
+
+            }
+
+            
 
             /*minden írót amit egyszer létrehozol és megnyitod azt le is kell zárni
             másképp vagy ír bele valamit vagy egyáltalán semmit
@@ -300,6 +526,7 @@ namespace CreateData
             jegyiro.Close();
             beosztas.Close();
             eladottjegyek.Close();
+            menetrendek.Close();
             Console.WriteLine("Done");
             Console.Beep(1200, 690);//Yeay happy everything worked noises
             Console.ReadLine();

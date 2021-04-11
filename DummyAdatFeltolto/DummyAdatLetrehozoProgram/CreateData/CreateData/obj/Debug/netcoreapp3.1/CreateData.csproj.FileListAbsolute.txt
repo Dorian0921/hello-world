@@ -24,3 +24,16 @@ D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\
 D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.dll
 D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.pdb
 D:\AdatbázisokKötprog\hello-world\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.genruntimeconfig.cache
+D:\AdatbázisokKötprog\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.exe
+D:\AdatbázisokKötprog\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.deps.json
+D:\AdatbázisokKötprog\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.runtimeconfig.json
+D:\AdatbázisokKötprog\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.runtimeconfig.dev.json
+D:\AdatbázisokKötprog\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.dll
+D:\AdatbázisokKötprog\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\bin\Debug\netcoreapp3.1\CreateData.pdb
+D:\AdatbázisokKötprog\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.csprojAssemblyReference.cache
+D:\AdatbázisokKötprog\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.AssemblyInfoInputs.cache
+D:\AdatbázisokKötprog\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.AssemblyInfo.cs
+D:\AdatbázisokKötprog\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.csproj.CoreCompileInputs.cache
+D:\AdatbázisokKötprog\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.dll
+D:\AdatbázisokKötprog\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.pdb
+D:\AdatbázisokKötprog\DummyAdatFeltolto\DummyAdatLetrehozoProgram\CreateData\CreateData\obj\Debug\netcoreapp3.1\CreateData.genruntimeconfig.cache
