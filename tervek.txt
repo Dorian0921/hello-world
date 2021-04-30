@@ -1,0 +1,26 @@
+Megvalósítás:
+Frontend design
+Képernyőterv 
+menüterv
+
+Lekérdezések
+Menetrend lekérdező
+Munkabérszámítás
+statisztika, mennyit kerestünk városokra leosztva
+hány százalék utazik kedvezményesen
+veszteséges ellenőrzés
+jegyvásárlás jegyadatok
+leggyorsabb vonatunk nevének kiírása
+tul keves munkás az állomáson
+hanyan utaztak egy vonaton
+
+
+Triggerek:
+Trigger registrációkor ellenőrzésre
+Vonat törlés trigger ha menetrendben van nem törölhető
+Vonat csere trigger ha már foglalt másik vonalon
+utolsó dolgozó törlésére trigger nem enged
+
+Integritás ellenőrzések hogy jók e az adatok
+
+Tárolt eljárások pl kifizetéshez
