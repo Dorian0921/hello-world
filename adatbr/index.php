@@ -16,7 +16,7 @@
             <li class="menu"><a href="jegyvasarlas.php">Jegyvásárlás</a></li>
             <li class="menu_jelen"><a href="informacio.php">Információ</a></li>
             <li class="menu"><a href="login.php">Login</a></li>
-            <li class="menu"><a href="registracio.php">Registráció</a></li>
+            <li class="menu"><a href="registr.php">Registráció</a></li>
         </ul>
     </nav>
 </header>
