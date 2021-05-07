@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" href="css/3d.css">
+    <link rel="stylesheet" href="../css/index.css">
     <title>Információ</title>
 
 </head>
 <body>
-<header>
-    <h1>FeMáLo Software Development Inc.</h1>
-    <nav>
-        <ul>
-            <li class="menu"><a href="menetrend.php">Menetrend</a></li>
-            <li class="menu"><a href="jegyvasarlas.php">Jegyvásárlás</a></li>
-            <li class="menu_jelen"><a href="informacio.php">Információ</a></li>
-            <li class="menu"><a href="login.php">Login</a></li>
-            <li class="menu"><a href="registr.php">Registráció</a></li>
-        </ul>
-    </nav>
-</header>
+
+<div class="header">
+    <img src="../Images/trainlogo.png" alt="Train Logo" height="150" width="150" >
+    <a href="menetrend.php">Menetrend</a>
+    <a href="jegyvasarlas.php">Jegyvásárlás</a>
+    <a href="index.php" class="active">Információ</a>
+    <a href="register.php">Regisztráció</a>
+    <a href="login.php">Bejelentkezés</a>
+    <span> </span>
+</div>
 
 <main>
     <section>
-        <form method="post" astion="index.php">
+        <form method="post" action="index.php">
           <label for="tabla">Lekérdezhető táblák:</label><br />
              <select name="tabla" id="tabla">
                  <option value="VA" selected>Városok</option>
@@ -85,8 +83,8 @@
 </main>
 </body>
 <footer >
-    <p >
-        <br > FeMáLo Software Development Inc . Minden jog fentartva .
-    </p >
+    <h1>
+        FeMáLo Software Development Inc . Minden jog fentartva .
+    </h1>
 
 </html>
