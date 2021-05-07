@@ -30,7 +30,7 @@
                  <option value="VO">Vonatok</option>
                  <option value="RE">Rendezvények</option>
                  <option value="BE">Beosztás</option>
-                 <option value="JE">Jegyek</option>
+                 <option value="JE">Menetrendek</option>
                  <input type="submit" value="Lekérdezés" name="keres">
              </select>
         </form>
@@ -47,7 +47,7 @@
                case "VO": $tablanev="vonatok";break;
                case "RE": $tablanev="rendezveny";break;
                case "BE": $tablanev="beosztas";break;
-               case "JE": $tablanev="jegy_ar";break;
+               case "JE": $tablanev="menetrendek";break;
                default:die("HIBA: valami elromlott");break;
            }
         }
@@ -66,7 +66,7 @@
             $e = oci_error($stid);
             trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
         }
-        echo "<table border='1'>\n";
+        echo "<table style='background-color:white' border='1'>\n";
         while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
             echo "<tr>\n";
             foreach ($row as $item) {
