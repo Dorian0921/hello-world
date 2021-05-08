@@ -1,0 +1,107 @@
+Munkabérszámítás:                  SELECT dolgozok.username, ((EXTRACT(DAY FROM meddig)-EXTRACT(DAY FROM mettol))*dolgozok.ber*8*4) AS Haviber from beosztas inner join dolgozok on beosztas.username=dolgozok.username Where dolgozok.username='kovetkezetes_acsalapu_ormanyos'
+
+
+statisztika, mennyit kerestünk városokra leosztva  :               Select (EXTRACT(Year FROM idopont))as ev,honnan, sum(ar) as Bevetel from Eladottjegyek group by (EXTRACT(Year FROM idopont)),honnan order by ev
+
+
+
+hány százalék utazik kedvezményesen:
+
+SET SERVEROUTPUT ON
+Declare
+    osszesjegy Number;
+    szazalek Number;
+Begin
+Select Count(*) into osszesjegy from eladottjegyek;
+Select Round(Count(utas.username)/osszesjegy*100,2) into szazalek from utas inner join eladottjegyek on utas.username=eladottjegyek.username where diak=1 or nyugdijas=1;
+
+
+DBMS_OUTPUT.PUT_LINE (szazalek);
+
+
+END;
+
+
+
+
+
+
+
+
+
+
+Profit (Not really):                         
+SET SERVEROUTPUT ON
+Declare
+    bevetel Number;
+    kiadas Number;
+    profit INTEGER;
+Begin
+    bevetel:=0;
+    Select Sum(ar) into bevetel from eladottjegyek where EXTRACT(Year FROM idopont)=EXTRACT(Year FROM SYSDATE) and EXTRACT(Month FROM idopont)=EXTRACT(Month FROM SYSDATE);
+    SELECT SUM((EXTRACT(DAY FROM meddig)-EXTRACT(DAY FROM mettol))*dolgozok.ber*8*4) AS Haviber into kiadas from beosztas inner join dolgozok on beosztas.username=dolgozok.username ;
+    profit := bevetel-kiadas;
+    
+    DBMS_OUTPUT.PUT_LINE (profit);
+
+
+END;
+
+
+
+
+
+Leggyorsabb vonatunk nevének kiírása:
+
+Select vonatok.nev, indulo_varos,erkezo_varos, EXTRACT(minute FROM(erkezoidopont-induloidopont))as perc from menetrendek inner join vonatok on menetrendek.szerelveny_szam=vonatok.szerelveny_szam order by perc FETCH FIRST 1 rows only
+
+
+
+
+
+
+
+
+menetrendek:
+
+select indulo_varos,
+erkezo_varos,
+to_char(extract(hour from induloidopont))||to_char(':')||trim(to_char(extract(minute from induloidopont),'00'))as induloidopont,
+to_char(extract(hour from erkezoidopont))||to_char(':')||trim(to_char(extract(minute from erkezoidopont),'00'))as erkezoidopont
+from menetrendek;
+
+
+
+
+tul keves munkás az állomáson:
+
+Select varos,foglalkozas, Count(foglalkozas)as darab  from dolgozok  group by varos, foglalkozas having Count(foglalkozas)<5 order by varos
+
+
+
+honnan utazott a legtöbb ember:
+
+
+select honnan,Count(username) from eladottjegyek group by honnan order by Count(username) desc FETCH FIRST 1 rows only
+
+
+
+
+
+
+
+
+
+nyári rendezvények:
+
+select helyszin, to_char(extract(year from idopont))||
+to_char('.')||trim(to_char(extract(month from idopont),'00'))||
+to_char('.')||trim(to_char(extract(day from idopont),'00'))||to_char('.')as induloidopont,
+rendezvenynev 
+from rendezveny
+where extract(month from idopont)>5 and extract(month from idopont)<9
+
+
+
+
+
