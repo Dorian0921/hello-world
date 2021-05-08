@@ -11788,3 +11788,97 @@ INSERT INTO ELADOTTJEGYEK(ELADOTTJEGYID,USERNAME,JEGYKATEGORIA,IDOPONT,HONNAN,HO
 INSERT INTO ELADOTTJEGYEK(ELADOTTJEGYID,USERNAME,JEGYKATEGORIA,IDOPONT,HONNAN,HOVA,AR)VALUES('4466','rendszereto_mokus','3',TO_DATE('2021-6-2', 'yyyy/mm/dd'),'Szekszard','Szolnok','10160');
 
 
+
+create or replace trigger Dolgozo_torles
+  After delete
+  on dolgozok
+  for each row
+begin
+   update varosok 
+      Set Dolgozok_szama = nvl(Dolgozok_szama,0)-1 
+    where varosok.varosnev=:new.varos;    
+end;
+
+
+
+create or replace trigger Dolgozo_beillesztes
+  After insert
+  on dolgozok
+  for each row
+begin
+   update varosok 
+      Set Dolgozok_szama = nvl(Dolgozok_szama,0)+1 
+    where varosok.varosnev=:new.varos;    
+end;
+
+
+Create or replace trigger Regisztracio
+before insert
+on login
+for each row
+declare
+    cursor usernames IS SELECT * FROM login;
+begin
+    for u in usernames loop
+        if u.username= :new.username then
+            RAISE_APPLICATION_ERROR(-20111, 'Használt felhasználónév!');
+        end if;
+    end loop;
+end;
+
+
+CREATE SEQUENCE seq_dolgozoid
+MINVALUE 650
+START WITH 651
+INCREMENT BY 1
+CACHE 10; 
+
+
+CREATE SEQUENCE seq_beosztasid
+MINVALUE 650
+START WITH 651
+INCREMENT BY 1
+CACHE 10; 
+
+
+
+
+CREATE SEQUENCE seq_eladottjegyid
+MINVALUE 5000
+START WITH 5001
+INCREMENT BY 1
+CACHE 10; 
+
+
+
+CREATE SEQUENCE seq_jegyarid
+MINVALUE 10
+START WITH 11
+INCREMENT BY 1
+CACHE 10; 
+
+
+
+CREATE SEQUENCE seq_menetrendid
+MINVALUE 500
+START WITH 501
+INCREMENT BY 1
+CACHE 10; 
+
+
+
+
+CREATE SEQUENCE seq_rendezvenyid
+MINVALUE 100
+START WITH 101
+INCREMENT BY 1
+CACHE 10; 
+
+
+
+
+CREATE SEQUENCE seq_vonatid
+MINVALUE 100
+START WITH 101
+INCREMENT BY 1
+CACHE 10; 
