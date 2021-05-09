@@ -1,3 +1,24 @@
+<?php
+$conn=oci_connect("system","oracle","localhost/XE");
+if (!$conn) {
+    $e = oci_error();
+    trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+}
+
+$query = oci_parse($conn, "DELETE FROM UTAS WHERE USERNAME='" . $_GET["USERNAME"] . "'");
+$result = oci_execute($query, OCI_DEFAULT);
+if($result) {
+    oci_commit($conn);
+    echo "Sikeres törlés.";
+}
+else {
+    echo "Hiba.";
+}
+oci_free_statement($query);
+oci_close($conn);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,38 +35,33 @@
     <a href="register.php">Regisztráció</a>
     <a href="login.php" class="active">Bejelentkezés</a>
     <span> </span>
-</div>
 
-<form action="login.php" method="post">
-    <div class="container">
-        <h1>Bejelentkezés</h1>
-        <p>Kérem töltse ki az alábbi mezőket</p>
+    <table>
+        <tr>
+            <td>Név</td>
+            <td>Születési dátum</td>
+            <td>E-mail cím</td>
+            <td>Diák</td>
+            <td>Nyugdíjas</td>
+        </tr>
+        <?php
+        $i=0;
+        while($row=oci_fetch_array($result)) {
+            ?>
+            <tr>
+                <td><?php echo $row["NEV"]; ?></td>
+                <td><?php echo $row["SZULDATUM"]; ?></td>
+                <td><?php echo $row["EMAIL"]; ?></td>
+                <td><?php echo $row["DIAK"]; ?></td>
+                <td><?php echo $row["NYUGDIJAS"]; ?></td>
+                <td><a href="username=<?php echo $row["USERNAME"]; ?>">Törlés</a></td>
+            </tr>
+            <?php
+            $i++;
+        }
+        ?>
+    </table>
 
-        <hr>
-
-        <label><b>Név</b></label>
-        <input type="text" placeholder="Adja meg a nevét!" name="username">
-
-        <label><b>E-mail</b></label>
-        <input type="email" placeholder="Adja meg E-mail címét!" name="email">
-
-        <label><b>Jelszó</b></label>
-        <input type="password" placeholder="Adja meg a jelszavát!" name="pw">
-
-        <label>
-            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Adatok megjegyzése
-        </label>
-
-        <div class="fix">
-            <button type="submit" name="login">Bejelentkezés</button>
-            <button type="reset" id="buttonres">Adatok törlése</button>
-        </div>
-
-        <h2>Nincs még fiókja? Regisztráljon itt: <a href="register.php" class="notwhite"> Regisztráció</a></h2>
-    </div>
-</form>
 
 </body>
 </html>
-
-

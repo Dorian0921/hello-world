@@ -98,4 +98,7 @@ button:hover {
     clear: both;
     display: table;
 }
+footer ~ a{
+    color: #dddddd;
+}
 
